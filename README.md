@@ -29,7 +29,6 @@ Run server:
 * The user can order pokemon by any attribute
 * The user can filter pokemon by any attribute
 
-
 ## Mockup
 ![mockup](imgs/mockup.png)
 
@@ -42,11 +41,13 @@ Run server:
 | types: string[] |
 
 ## Service Contract
-
 |Method|Path|Response
 |-|-|-|
 | GET | /pokemons | Pokemon[] |
 | GET | /pokemon/:id | Pokemon |
+
+## External Services
+[PokeAPI](https://pokeapi.co/)
 
 ## Submission
 Push to GitHub and create a pull request
