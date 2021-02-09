@@ -11,8 +11,14 @@ pokemon.set('view engine', 'pug');
 
 pokemon.get('/', async (req, res) => {
     let pokedexResponse = await axios.get('https://pokeapi.co/api/v2/pokemon/ditto');
-    console.log(pokedexResponse);
-    res.render('pokemon');
+    console.log('pokedexResponse.data', pokedexResponse.data);
+    console.log('pokedexResponse.data.abilities', pokedexResponse.data.name)
+    res.render('pokemon', {name: pokedexResponse.data.name, 
+                           id: pokedexResponse.data.id, 
+                           types: pokedexResponse.data.types[0].type.name, 
+                            image: pokedexResponse.data.sprites['front_default']
+
+                        });
 })
 
 // pokemon.get('/', (req, res) => {
