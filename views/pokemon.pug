@@ -4,13 +4,15 @@ html(lang="en")
     title Pokedex
     link(rel="stylesheet", href="/static/stylesheet.css")
   body
+
     h1 Pokedex
      .wrapper 
-      .card
-        p #{name}
-        p # #{id}
-        //- p type: #{types}
-        img(src=`${image}` height='250px' width='200px')
+       for individualPokemon in pokemon
+        .card      
+          p #{individualPokemon.name}
+          p # #{individualPokemon.id}
+          //- p type: #{types}
+          img(src=`${individualPokemon.image}` height='250px' width='200px')
 
        
        

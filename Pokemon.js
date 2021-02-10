@@ -10,15 +10,22 @@ pokemon.set('view engine', 'pug');
 // pokemon.use(ajaxRoute);
 
 pokemon.get('/', async (req, res) => {
-    let pokedexResponse = await axios.get('https://pokeapi.co/api/v2/pokemon/ditto');
-    console.log('pokedexResponse.data', pokedexResponse.data);
-    console.log('pokedexResponse.data.abilities', pokedexResponse.data.name)
-    res.render('pokemon', {name: pokedexResponse.data.name, 
-                           id: pokedexResponse.data.id, 
-                           types: pokedexResponse.data.types[0].type.name, 
-                            image: pokedexResponse.data.sprites['front_default']
-
-                        });
+    let pokemon = [];
+    for(let pokemonNumber = 1; pokemonNumber < 10; pokemonNumber++){
+        let pokedexResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`);
+        pokemon.push(pokedexResponse.data);
+    }
+    
+    pokemon = pokemon.map( data => {
+        let {name, id }= data;
+        let type = data.types[0].type.name;
+        let image = data.sprites['front_default'];
+        return {image,type,id,name};
+    });
+   //  console.log({pokemon});
+    // console.log('pokedexResponse.data', pokedexResponse.data);
+    // console.log('pokedexResponse.data.abilities', pokedexResponse.data.name)
+    res.render('pokemon', {pokemon});
 })
 
 // pokemon.get('/', (req, res) => {
