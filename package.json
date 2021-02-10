@@ -2,10 +2,10 @@
   "name": "pokedex-app",
   "version": "1.0.0",
   "description": "![pickachu](https://media.giphy.com/media/xuXzcHMkuwvf2/giphy.gif)",
-  "main": "index.js",
+  "main": "rest/index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node rest/index.js"
+    "start": "nodemon rest/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/code-differently/Pokedex-App#readme",
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7"
+  },
+  "keywords": []
 }
