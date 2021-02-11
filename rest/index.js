@@ -13,14 +13,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.get("/Pokemon", async (req, res) => {
       pokemon = fetch("https://pokeapi.co/api/v2/pokemon/?limit=2")
       data = await res.json();
-      const pokemon = [];
-
+});
 let allPokemon = data.map((data) => ({
   name: data.name,
   id: data.id,
   image: data.sprites["front_default"]
 }));
-});
+
 
 
 
