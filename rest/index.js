@@ -11,14 +11,19 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get("/Pokemon", async (req, res) => {
-      pokemon = fetch("https://pokeapi.co/api/v2/pokemon/?limit=2")
-      data = await res.json();
+      try {
+        pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=2")
+        data = await res.json();
+        console.log(data);
+      } catch(error) {
+          console.error(error.message);
+      }
+      let allPokemon = data.map((data) => ({
+        name: data.name,
+        id: data.id,
+        image: data.sprites["front_default"]
+      }));
 });
-let allPokemon = data.map((data) => ({
-  name: data.name,
-  id: data.id,
-  image: data.sprites["front_default"]
-}));
 
 
 
