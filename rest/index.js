@@ -21,7 +21,7 @@ app.get("/Pokemon", async (req, res) => {
       name: data.name,
       id: data.id,
       image: data.sprites["front_default"],
-      type: data.types.map(type => type.type.name).join(", "), //????
+      
     }));
 
     app.listen(3000, () => {
