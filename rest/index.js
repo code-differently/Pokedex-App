@@ -4,39 +4,31 @@ const bodyParser = require("body-parser");
 const { removeAllListeners } = require("nodemon");
 let data = new Object();
 
-
-
-
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get("/Pokemon", async (req, res) => {
       try {
-        let pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=2")
+        let pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1");
         data = await res.json();
+        console.log(typeof(data));
+        //console.log(data);
       } catch(error) {
          document.getElementById("log").innerHTML = `Error: ${error}`;
       } finally {
-        for (const [key, value] of Object.entries(data)) {
-        this.name =  data.name;
-        this.id = data.id;
-        //this.image = data.sprites["front_default"];
+        for (var key in data) {
+          this.name =  data.name;
+          this.id = data.id;
+          //this.image = data.sprites["front_default"];
+          this.type = data.type;
         }
+        console.log(this.name);
+        console.log(this.id);
+        console.log(this.type);
+        
     } // end finally
-}); //end app.get
-
-
-
-
-
-      
-
-     
-
-
-
-      
+}); //end app.get     
 
     app.listen(3000, () => {
       console.log("Started on Port 3000");
