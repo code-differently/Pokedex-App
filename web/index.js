@@ -1,9 +1,12 @@
 const button = document.querySelector("button");
+const inputText = document.querySelector("#numberOfPokemons");
 
 button.addEventListener("click", () => {
-   fetch("http://localhost:4000/all")
+    let input = inputText.value;
+   fetch(`http://localhost:4000/all/${input}`)
      .then((res) => res.json())
      .then((pokemon) => {
-       console.log(pokemon.data);
+
+       console.log(pokemon);
      });
  });
