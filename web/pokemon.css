@@ -18,7 +18,6 @@
     --rock:#8a3d22;
     --steel:#42bd94;
     --water:#86a9fa;
-    --pika:#f5e652;
 }
 
 /* Global Layout Set-up */
@@ -55,15 +54,13 @@ h1 {
 }
 
 img {
-    margin-top: 50px;
-    max-width: 25vh;
-    justify-content: center;
-    padding-bottom: 10px;
+    width: 80%;
+    height: auto;
 }
 
 .card {
+    background-color: var(--electric);
     margin-top: 4rem;
-    background-color: var(--pika);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     min-width: 15%;
     padding-bottom: 2.5em;
@@ -74,7 +71,7 @@ h4.pName {
     margin-top: 1rem;
     display: float;
     float: left;
-    padding-right: 3rem;
+    padding-right: 2rem;
     font-weight: bold;
 }
 
@@ -82,7 +79,7 @@ h4.pNum {
     margin-top: 1rem;
     display: float;
     float: right;
-    padding-left: 3rem;
+    padding-left: 2rem;
     font-weight: bold;  
 }
 
