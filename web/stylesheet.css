@@ -1,0 +1,28 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 100px;
+    grid-auto-rows: minmax(400px, auto);
+  }
+  .card {
+      /* display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr, 5fr;
+        background-color: aquamarine;
+        /* font-size: 15px; */ 
+        display: flex;
+        flex-direction: column;
+        background-color: aquamarine;
+        min-width: 30;
+  }
+img{
+  margin: auto;
+}
+ .idTypeDiv{
+   display:flex;
+   flex-direction: row;
+   justify-content: space-around;
+ }
+  .backround__red {
+    background-color: red;
+  }
