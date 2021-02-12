@@ -2,7 +2,7 @@ const express = require("express");
 const fetch = require("node-fetch");
 const bodyParser = require("body-parser");
 const { removeAllListeners } = require("nodemon");
-let data = new Object();
+
 
 const app = express();
 
@@ -12,16 +12,16 @@ app.get("/Pokemon", async (req, res) => {
       try {
         let pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1");
         data = await res.json();
-        console.log(typeof(data));
-        //console.log(data);
+        let pokemonAll = JSON.parse(data);
+        console.log(pokemonAll);
       } catch(error) {
          document.getElementById("log").innerHTML = `Error: ${error}`;
       } finally {
-        for (var key in data) {
-          this.name =  data.name;
-          this.id = data.id;
-          //this.image = data.sprites["front_default"];
-          this.type = data.type;
+        for (var key in pokemonAll) {
+          this.name =  pokemonAll.name;
+          this.id = pokemonAll.id;
+          this.image = pokemonAll.sprites["front_default"];
+          this.type = pokemonAll.type;
         }
         console.log(this.name);
         console.log(this.id);
