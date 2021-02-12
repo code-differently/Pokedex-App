@@ -14,20 +14,19 @@ app.get("/Pokemon", async (req, res) => {
       try {
         let pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1");
         data = await res.json();
-        let pokemonAll = req.body;
-        console.log(pokemonAll);
+        console.log(data);
       } catch(error) {
-         document.getElementById("log").innerHTML = `Error: ${error}`;
+         //document.getElementById("log").innerHTML = `Error: ${error}`;
       } finally {
-        for (var key in pokemonAll) {
-          this.name =  pokemonAll.name;
-          this.id = pokemonAll.id;
-          //this.image = data.sprites["front_default"];
-          this.type = pokemonAll.type;
-        }
-        console.log(this.name);
-        console.log(this.id);
-        console.log(this.type);
+        // for (var key in res.body.data) {
+        //   this.name =  res.body.name;
+        //   this.id = res.body.id;
+        //   //this.image = data.sprites["front_default"];
+        //   this.type = res.body.type;
+        // }
+        // console.log(this.name);
+        // console.log(this.id);
+        // console.log(this.type);
         
     } // end finally
 }); //end app.get     
