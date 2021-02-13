@@ -27,9 +27,22 @@ function showPokemon ( id, name, type, image){
    //create a div for card follow html format
  //append to mainContainer.appendChild(variable);
  console.log(name, id, image, type);
- let pikachu = document.createElement('p');
- pikachu.textContent = name;
- console.log (name);
-  mainContainer.appendChild(pikachu);
+ let pokeName = document.createElement('h4');
+ pokeName.textContent = name;
+
+ let pokeId = document.createElement('h4');
+ pokeId.textContent = id;
+
+ let pokeType = document.createElement('h4');
+ pokeType.textContent = type;
+
+ let pokeImage = document.createElement('sprites');
+ pokeImage.textContent = image;
+ 
+ 
+  mainContainer.appendChild(pokeName);
+  mainContainer.appendChild(pokeId);
+  mainContainer.appendChild(pokeType);
+  mainContainer.appendChild(pokeImage);
  
 }
