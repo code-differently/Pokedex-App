@@ -40,7 +40,7 @@ function showPokemon ( id, name, type, image){
       <h4 class="type"><span>${type}</span></h4>
     </div>
     <div class="img-container">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${image}.png"
     </div>
   </div>
   
