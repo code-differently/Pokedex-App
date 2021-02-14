@@ -1,36 +1,79 @@
-const express = require("express");
-const fetch = require("node-fetch");
-const bodyParser = require("body-parser");
-const { removeAllListeners } = require("nodemon");
-
+const express = require('express')
+const axios = require('axios');
+const cors = require("cors")
+var Pokedex = require('pokedex-promise-v2');
+var P = new Pokedex();
 
 const app = express();
+const port = 3000;
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.set('view engine', 'pug');
+app.use(cors());
+
+let pokemon;
+
+class Pokemon {
+  constructor(name, id, img, type) {
+    this.name = name;
+    this.id = id;
+    this.img = img;
+    this.type = type;
+  }
+
+}
+
+let pokedex = [];
+let pokeman;
+
+app.get('/', async (req, res) => {
+
+    var interval = {
+      limit: 50,
+      offset: 0
+    }
+
+  //select list of 5 pokemon, with their names and urls
+  //loop through each one's url to 
+  //then access the rest of its data
+  //create an instance of the pokemon class
+  //fill it with the data from second API call
+  //push that instance object to an array
+  //loop restarts
+
+  P.getPokemonsList(interval) // with Promise
+  .then(function(response) {
+    console.log(response.results);
+    for ( let i = 0 ; i < response.results.length ; i++ ) {
+
+      P.resource([response.results[i].url]) // with Promise
+      .then(function(response) {
+        pokeman = response.map(data => (
+          {
+            name: data.name,
+            id: data.id,
+            img: data.sprites["front_default"],
+            type: data.types[0].type.name
+          }
+        ))
 
 
-app.get("/Pokemon", async (req, res) => {
-      try {
-        let pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=1");
-        data = await res.json();
-        console.log(data);
-      } catch(error) {
-         document.getElementById("log").innerHTML = `Error: ${error}`;
-      } finally {
-        for (var key in data) {
-          this.name =  data.name;
-          this.id = data.id;
-          this.image = data.sprites["front_default"];
-          this.type = data.type;
-        }
-        console.log(this.name);
-        console.log(this.id);
-        console.log(this.type);
-        
-    } // end finally
-}); //end app.get     
+        pokedex.push(pokeman);
+        return;
+      }).catch(function(error) {
+        console.log('There was an ERROR: ', error);
+      })
+  
+    } //end loop
+    res.send( pokedex );
 
-    app.listen(3000, () => {
-      console.log("Started on Port 3000");
-}); //end of app.listen
+    // res.render('pokedex', { pokemon })
+  }).catch(function(error) {
+    console.log('There was an ERROR: ', error);
+  });
+
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at https://localhost:${port}`)
+});
+
