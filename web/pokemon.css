@@ -46,24 +46,30 @@ h1 {
                  0 20px 20px rgba(0,0,0,.15);
 }
 
-.container {
+.poke_container {
     display:flex;
-    flex-direction: column;
+    flex-wrap: column;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
-img {
-    width: 80%;
+.poke.img-container {
+    width: auto;
     height: auto;
 }
 
-.card {
-    background-color: var(--electric);
-    margin-top: 4rem;
+.poke.img-container img  {
+    max-width: auto;
+}
+
+.pokemon {
+    background-color: #3b9950;
+    /*margin-top: 4rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     min-width: 15%;
-    padding-bottom: 2.5em;
+    padding-bottom: 2.5em;*/
     border-style:solid; 
 }
 
