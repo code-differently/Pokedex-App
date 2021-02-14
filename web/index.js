@@ -1,27 +1,6 @@
 const button = document.querySelector("button");
 const inputText = document.querySelector("#numberOfPokemons");
 const mainContainer = document.querySelector("#poke_container");
-const colors = {
-bug: '#3b9950', 
-dark: '#5a5979',
-dragon: '#61cad9',
-electric: '#fbfb71',
-fairy: '#ea1169',
-fighting: '#ef6138',
-fire: '#fd4c59',
-flying: '#93b2c7',
-ghost: '#906790',
-grass: '#26cb4f',
-ground: '#6e491f', 
-ice: '#d9eefa',
-normal: '#c998a7',
-poison: '#9b69d8',
-psychic: '#f71c91',
-rock: '#8a3d22',
-steel: '#42bd94',
-water: '#86a9fa'
-};
-const main_types = Object.keys(colors);
 
 button.addEventListener("click", () => {
     let input = inputText.value;
@@ -48,22 +27,23 @@ function showPokemon ( id, name, type, image){
   
  const poke = document.createElement('div');
  poke.classList.add('poke_container')
- poke.className = 'container';
+ poke.className = 'pokemon';
  poke.id = 'cardDeck'
 
  //const poke_types = pokemon[i]type.map(el => el.type.name) 
  //const typeColor = main_types.find(type => poke_types.indexOf(type) > -1 );
  const pokeInnerHTML = `
-  <div class="pokemon">
+  <div class="pokemon">  
     <div class="info">
-      <span class="pNum">${id}</span>
-      <h4 class="name">${name}</h4>
+      <h4 class="pNum">${id}</h4>
+      <h4 class="pName">${name}</h4>    
       <h4 class="type"><span>${type}</span></h4>
     </div>
     <div class="img-container">
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
     </div>
   </div>
+  
  
  `;
 
