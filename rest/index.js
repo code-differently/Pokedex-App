@@ -19,7 +19,6 @@ class Pokemon {
     this.img = img;
     this.type = type;
   }
-
 }
 
 let pokedex = [];
@@ -55,22 +54,18 @@ app.get('/', async (req, res) => {
             type: data.types[0].type.name
           }
         ))
-
-
         pokedex.push(pokeman);
         return;
+      
       }).catch(function(error) {
         console.log('There was an ERROR: ', error);
       })
-  
-    } //end loop
+    } 
     res.send( pokedex );
 
-    // res.render('pokedex', { pokemon })
   }).catch(function(error) {
     console.log('There was an ERROR: ', error);
   });
-
 });
 
 app.listen(port, () => {
