@@ -1,33 +1,16 @@
 const getPokemonProps = (pokemonData) =>  {
-    let name = pokemonData.name;
+    // let name = pokemonData.name;
+    let name = pokemonData.name[0].toUpperCase() + pokemonData.name.substring(1, pokemonData.name.length);
+   
     let id = pokemonData.id;
-   //  let image = pokemonData.sprites['front_shiny'];
     let image2 = pokemonData.sprites.other['official-artwork']['front_default'];
     let type = pokemonData.types[0].type.name;
-
+    console.log(type);
     return {name,id,image2, type};
+   
 }
 
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(){
-        if(this.readyState === 4 && this.status === 200){
-           
-         let response = JSON.parse(this.responseText);
-         console.log(response);
-         let name = response.name;
-         let id = response.id;
-        //  let image = response.sprites['front_shiny'];
-         let image2 = response.sprites.other['official-artwork']['front_default'];
-         let type = response.types[0].type.name;
-            // console.log(response);
 
-           
-      
-            // document.querySelector('.card').innerHTML += id;
-            // document.querySelector('.PokemonImage').src = image;
-        
-        }
-    }
     
     const getPokemon = (beg,end) => {
         const fetchRequests = [];
@@ -37,11 +20,14 @@ const getPokemonProps = (pokemonData) =>  {
         return Promise.all(fetchRequests);
     }
 
-    // xhr.open("GET", "http://localhost:4000/pokemon/98")
-    // xhr.send();
 
-    const renderPOkemon = ({name,id, image2})=> {
-        document.querySelector('.wrapper').innerHTML += `<div class="card"><div class="idTypeDiv"><h4>${name}</h4> <h4>${id}</h4> </div><img src="${image2}" height="200px" width="150px"> </div>`;
+    const renderPOkemon = ({name,id, image2, type})=> {
+        document.querySelector('.wrapper').innerHTML += `<div class="card ${type}"><div class="idTypeDiv"><h4>${name}</h4> <h4>${id}</h4> </div><img src="${image2}" height="200px" width="200px"> </div>`;
+        // const colorMap = { electric: '#0000' }
+
+        //     const pokemonColor = colorMap[pokemonType]
+
+        //     card.style.backgroundColor = pokemonColor
     }
     getPokemon(1, 100).then( data => data.map(getPokemonProps)).then(data => data.forEach(renderPOkemon));
 
