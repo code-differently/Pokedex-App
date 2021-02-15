@@ -1,9 +1,23 @@
 const express = require('express')
-const app = express()
-const port = 3000
+const axios = require('axios');
+const cors = require("cors")
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+const app = express()
+const port = 4000
+
+app.use(cors())
+
+
+
+app.get('/pokemon/:id', async (req, res) => {
+
+
+  let pokemonNumber = req.params.id
+   let pokedexResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`);
+   
+  res.send(pokedexResponse.data);
+
+
 })
 
 app.listen(port, () => {
