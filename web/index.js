@@ -22,7 +22,7 @@ function showPokemon(id, name, type, image){
     <div class="container">
     <div class="row">
       <h4 class="pName">${name}</h4>    
-      <h4 class="pNum">${id}</h4>
+      <h4 class="pNum">#${id}</h4>
       <div class="line"></div>
     </div>
     <img src="${image}";

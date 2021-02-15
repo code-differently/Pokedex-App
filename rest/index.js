@@ -21,7 +21,7 @@ app.get('/all/:count', async (req, response) => {
     .then(data => {
       let responseResult = [];
       for( let i = 0; i < count; i++){
-        let responseObject = { id: data[i].id, name: data[i].name, type: data[i].types[0].type.name, image: data[i].sprites.back_default};
+        let responseObject = { id: data[i].id, name: data[i].name, type: data[i].types[0].type.name, image: data[i].sprites.front_default};
         responseResult.push(responseObject);
       }
       response.json(responseResult);

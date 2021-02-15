@@ -24,28 +24,29 @@ h1 {
 }
 
 .container {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    margin:1rem;
+    justify-content: space-evenly;
+    grid-gap: 1.5rem;
 }
 
+.col {
+    grid-template-columns: auto auto auto auto;
+}
+
+
 img {
-    width: 80%;
-    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
-    background-color: var(--electric);
-    margin-top: 4rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    min-width: 15%;
-    padding-bottom: 2.5em;
-    border-style:solid; 
+    padding-bottom: 2rem;
+    border-style:solid;
 }
 
 h4.pName {
-    margin-top: 1rem;
     display: float;
     float: left;
     padding-right: 2rem;
@@ -53,7 +54,6 @@ h4.pName {
 }
 
 h4.pNum {
-    margin-top: 1rem;
     display: float;
     float: right;
     padding-left: 2rem;
@@ -61,10 +61,14 @@ h4.pNum {
 }
 
 .line {
-    height: 3.5rem;
+    height: 1.75rem;
     border-bottom: .1rem solid lightgrey;
     border-bottom-width: 90%;
 }
+
+/* label {
+    margin-right: 2rem;
+} */
 
 .bug { 
     background-color: #3b9950; 
